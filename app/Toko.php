@@ -9,18 +9,18 @@ class Toko extends Model
   protected $fillable = ['id_user', 'name', 'alamat', 'logo_toko'];
 
   public function users() {
-  return $this->belongsTo('Kasir\User');
+  return $this->belongsTo('App\User');
 }
 
 public function produks() {
-return $this->hasMany('Kasir\Produk');
+return $this->hasMany('App\Produk');
 }
 
 public function notas() {
-return $this->hasMany('Kasir\Nota');
+return $this->hasMany('App\Nota');
 }
 
 public function penjualans() {
-return $this->hasMany('Kasir\Penjualan');
+return $this->hasMany('App\Penjualan');
 }
 }

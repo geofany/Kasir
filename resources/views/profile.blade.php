@@ -5,16 +5,33 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Profile</div>
+                <div class="card-header">Hallo, {{$userData->name}}</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+                    Nama : {{$userData->name}}
+                    <br>
+                    Email : {{$userData->email}}
+                    <br>
+                    No. HP : {{$userData->hp}}
+                    <br>
+                    Nama Toko : {{$userData->tokos->name}}
+                    <br>
+                    Alamat Toko :
+                    <?php
+                  if ($userData->tokos->alamat == null) { ?>
+                    Alamat Belum Di Isikan
+                    <?php
 
-                    You are logged in!
+                  } else { ?>
+                    {{$userData->tokos->alamat}}
+                    <?php
+
+                  }?>
+                  <br>
+                  <a href="{{ url('/editProfile')}}"><input type="button" name="Edit" value="Edit Profile"></a>
+
+
+
                 </div>
             </div>
         </div>

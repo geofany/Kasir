@@ -20,6 +20,7 @@ Auth::routes();
 
 
 Route::group(['middleware' => ['auth', 'checkRole:0,1,2']], function () {
+  Route::get('/editProfile', 'ProfileController@editProfile');  
   Route::resource('home', 'HomeController');
   Route::resource('barang', 'BarangController');
   Route::resource('profile', 'ProfileController');

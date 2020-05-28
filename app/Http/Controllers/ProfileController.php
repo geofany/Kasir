@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
+use App\User;
+use App\Toko;
 
 class ProfileController extends Controller
 {
@@ -13,7 +16,9 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('profile');
+        // echo Auth::user()->id;
+        $userData = User::with('tokos')-> where('id', Auth::user()->id)->firstOrFail();
+        return view('profile', compact('userData'));
     }
 
     /**
@@ -34,7 +39,10 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $user_id = Auth::user()->id;
+      User::where('id', $user_id)->update(['name' => $request->name, 'email' => $request->email, 'hp' => $request->hp]);
+      Toko::where('user_id', $user_id)->update(['name' => $request->namaToko, 'alamat' => $request->alamat]);
+      return redirect()->route('profile.index');
     }
 
     /**
@@ -56,7 +64,7 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -80,5 +88,11 @@ class ProfileController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function editProfile()
+    {
+      $userData = User::with('tokos')-> where('id', Auth::user()->id)->firstOrFail();
+      return view('editProfile', compact('userData'));
     }
 }

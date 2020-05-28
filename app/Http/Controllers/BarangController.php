@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Toko;
+use App\User;
+use App\Produk;
+use Auth;
+use Redirect;
 
 class BarangController extends Controller
 {
@@ -13,7 +18,9 @@ class BarangController extends Controller
      */
     public function index()
     {
-        return view('barang');
+        $toko = Toko::where('user_id', Auth::user()->id)->firstOrFail();
+        $barang = Produk::where('toko_id', $toko->id)->get();
+        return view('barang', compact('barang'));
     }
 
     /**
@@ -23,7 +30,7 @@ class BarangController extends Controller
      */
     public function create()
     {
-        //
+        return view('tambahBarang');
     }
 
     /**
@@ -34,7 +41,18 @@ class BarangController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $toko = Toko::where('user_id', Auth::user()->id)->firstOrFail();
+
+      $barang = new Produk;
+      $barang->toko_id = $toko->id;
+      $barang->name = $request->name;
+      $barang->harga_beli = $request->harga_beli;
+      $barang->harga_jual = $request->harga_jual;
+      $barang->stock = $request->stock;
+
+      $barang->save();
+      $message="Barang Berhasil Ditambahkan";
+      return view('tambahBarang',compact('message'));
     }
 
     /**
@@ -45,7 +63,7 @@ class BarangController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -56,7 +74,8 @@ class BarangController extends Controller
      */
     public function edit($id)
     {
-        //
+      $barang = Produk::where('id', $id)->firstOrFail();
+      return view('editBarang', compact('barang'));
     }
 
     /**
@@ -68,7 +87,15 @@ class BarangController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $barang = Produk::find($id);
+
+      $barang->name = $request->name;
+      $barang->harga_beli = $request->harga_beli;
+      $barang->harga_jual = $request->harga_jual;
+      $barang->stock = $request->stock;
+      $barang->save();
+      $message="Barang Berhasil Diedit";
+      return view('editBarang',compact('message', 'barang'));
     }
 
     /**
@@ -79,6 +106,10 @@ class BarangController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Produk::find($id)->delete();
+        $toko = Toko::where('user_id', Auth::user()->id)->firstOrFail();
+        $barang = Produk::where('toko_id', $toko->id)->get();
+        $message="Barang Berhasil Dihapus";
+        return view('barang', compact('message', 'barang'));
     }
 }

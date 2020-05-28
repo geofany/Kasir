@@ -9,9 +9,9 @@ class Nota extends Model
   protected $fillable = ['kode_penjualan', 'id_toko', 'total_bayar', 'total_keuntungan'];
 
   public function tokos() {
-  return $this->belongsTo('Kasir\Toko');
+  return $this->belongsTo('App\Toko');
 }
 public function penjualans() {
-return $this->hasMany('Kasir\Penjualan');
+return $this->hasMany('App\Penjualan');
 }
 }

@@ -39,7 +39,7 @@ class User extends Authenticatable
 
     public function tokos()
     {
-        return $this->hasOne('Kasir\Toko');
+        return $this->hasOne('App\Toko');
     }
 
     public const admin = 0;

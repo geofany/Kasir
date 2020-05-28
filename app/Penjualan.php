@@ -9,13 +9,13 @@ class Penjualan extends Model
   protected $fillable = ['kode_penjualan', 'id_produk', 'id_toko', 'qty', 'total', 'keuntungan'];
 
   public function produks() {
-  return $this->belongsTo('Kasir\Produk');
+  return $this->belongsTo('App\Produk');
 }
 public function notas()
 {
-  return $this->belongsTo('Kasir\Nota');
+  return $this->belongsTo('App\Nota');
 }
 public function tokos() {
-return $this->belongsTo('Kasir\Toko');
+return $this->belongsTo('App\Toko');
 }
 }
