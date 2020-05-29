@@ -28,7 +28,30 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        //
+      $userData = User::where('id', Auth::user()->id)->firstOrFail();
+      return view('editPicture', compact('userData'));
+    }
+
+    public function storePicture(Request $request)
+    {
+      $file = $request->file('pic');
+      if ($file != null) {
+        $filename = $file->getClientOriginalName();
+        $path = 'img/';
+        $file->move($path, $filename);
+
+
+        $folder = url("/img\/");
+        $location = $folder.$filename;
+
+        Toko::where('user_id', Auth::user()->id)->update(['logo_toko' =>  $location]);
+
+        return redirect()->route('profile.index');
+      } else {
+        $defaultPic = url('/img/logo.png');
+        Toko::where('user_id', Auth::user()->id)->update(['logo_toko' =>  $defaultPic]);
+        return redirect()->route('profile.index');
+      }
     }
 
     /**
@@ -94,5 +117,23 @@ class ProfileController extends Controller
     {
       $userData = User::with('tokos')-> where('id', Auth::user()->id)->firstOrFail();
       return view('editProfile', compact('userData'));
+    }
+
+    public function changePassword(Request $request)
+    {
+      if (Hash::check($request->old_password) === Auth::user()->password) {
+        $user = Auth::user();
+        $user->password = $request->new_password;
+        $user->save();
+        $message="Password Berhasil Diubah";
+        return view('changePassword', compact('message'));
+      }
+
+
+    }
+
+    public function changePw()
+    {
+      return view('changePassword');
     }
 }

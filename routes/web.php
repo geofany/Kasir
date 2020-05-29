@@ -17,11 +17,20 @@ Route::get('/', function () {
 
 Auth::routes();
 
-
-
 Route::group(['middleware' => ['auth', 'checkRole:0,1,2']], function () {
-  Route::get('/editProfile', 'ProfileController@editProfile');  
   Route::resource('home', 'HomeController');
+});
+
+Route::group(['middleware' => ['auth', 'checkRole:0']], function () {
+  Route::resource('admin', 'AdminController');
+});
+
+Route::group(['middleware' => ['auth', 'checkRole:1,2']], function () {
+  Route::get('/editProfile', 'ProfileController@editProfile');
+  Route::get('/changePassword', 'ProfileController@changePw');
+  Route::post('/storePicture', 'ProfileController@storePicture');
+  Route::post('/changepw', 'ProfileController@changePassword');
+  Route::resource('premium', 'PremiumController');
   Route::resource('barang', 'BarangController');
   Route::resource('profile', 'ProfileController');
   Route::resource('kasir', 'KasirController');

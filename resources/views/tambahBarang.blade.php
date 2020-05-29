@@ -36,9 +36,12 @@
                       <label for="stock">Stock</label>
                       <input class="form-control" type="number" name="stock" value="" required>
                     </div>
-                    <button class="btn btn-info form-control" type="submit" name="button">Tambahkan Barang</button>
-                  </form>
+                    <div class="form-group">
+                      <button class="btn btn-info form-control" type="submit" name="button">Tambahkan Barang</button>
 
+                    </div>
+                  </form>
+                  <a href="{{route('barang.index')}}"> <button class="btn btn-danger form-control" type="button" name="button">Kembali</button> </a>
                 </div>
             </div>
         </div>
@@ -48,7 +51,7 @@
   function validateForm() {
     var x = document.forms["tambah"]["harga_beli"].value;
     var y = document.forms["tambah"]["harga_jual"].value;
-    if (y < x) {
+    if (Number(y) < Number(x)) {
       alert("Harga Jual Kurang Dari Harga Beli!");
       return false;
     }

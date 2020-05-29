@@ -10,28 +10,33 @@
                 <div class="card-body">
                   <form class="" action="{{route('profile.store')}}" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}"/>
-                    Nama :
-                    <input type="text" name="name" value="{{$userData->name}}" required>
 
-                    <br>
-                    Email :
-                    <input type="text" name="email" value="{{$userData->email}}" required>
+                    <div class="form-group">
+                      <label for="name">Nama :</label>
+                      <input class="form-control" type="text" name="name" value="{{$userData->name}}" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="email">E-mail :</label>
+                      <input class="form-control" type="email" name="name" value="{{$userData->email}}" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="hp">No. HP :</label>
+                      <input class="form-control" type="number" name="name" value="{{$userData->hp}}" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="namaToko">Nama Toko :</label>
+                      <input class="form-control" type="text" name="name" value="{{$userData->tokos->name}}" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="alamat">Alamat :</label>
+                      <input class="form-control" type="text" name="name" value="{{$userData->tokos->alamat}}" required>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-success form-control" type="submit" name="button">Simpan</button>
+                    </div>
 
-                    <br>
-                    No. HP :
-                    <input type="number" name="hp" value="{{$userData->hp}}" required>
-
-                    <br>
-                    Nama Toko :
-                    <input type="text" name="namaToko" value="{{$userData->tokos->name}}" required>
-
-                    <br>
-                    Alamat Toko :
-                    <input type="text" name="alamat" value="{{$userData->tokos->alamat}}" required>
-                  <br>
-                  <input type="submit" name="" value="SIMPAN">
                   </form>
-                  <a href="{{route('profile.index')}}"><input type="submit" name="" value="KEMBALI"></a>
+                  <a href="{{route('profile.index')}}"> <button class="btn btn-danger form-control" type="button" name="button">Kembali</button> </a>
 
 
 

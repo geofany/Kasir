@@ -55,10 +55,17 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                  @if(Auth::user()->roles === 0)
+                                    <a class="dropdown-item" href="{{ route('admin.index')}}">{{__('List User')}}</a>
+                                    <a class="dropdown-item" href="{{ route('admin.create')}}">{{__('Request Premium')}}</a>
+                                  @else
                                   <a class="dropdown-item" href="{{ route('profile.index')}}">{{__('Profile')}}</a>
                                     <a class="dropdown-item" href="{{ route('barang.index')}}">{{__('Barang')}}</a>
                                     <a class="dropdown-item" href="{{ route('kasir.index')}}">{{__('Kasir')}}</a>
                                     <a class="dropdown-item" href="{{ route('statistik.index')}}">{{__('Statistik')}}</a>
+                                    @endif
+
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

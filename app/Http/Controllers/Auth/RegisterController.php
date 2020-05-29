@@ -64,6 +64,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $pic_path = url('/img/logo.png');
+
         $user = User::create([
             'roles' => 1,
             'name' => $data['name'],
@@ -75,6 +77,7 @@ class RegisterController extends Controller
         Toko::create([
           'user_id' => $user->id,
           'name' => $data['nama_toko'],
+          'logo_toko' => $pic_path,
         ]);
         return $user;
     }

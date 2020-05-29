@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateNotaDetailsTable extends Migration
+class CreatePremiumsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateNotaDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('nota_details', function (Blueprint $table) {
+        Schema::create('premiums', function (Blueprint $table) {
           $table->bigIncrements('id');
-          $table->integer('nota_id');
-          $table->integer('produk_id');
-          $table->integer('qty');
-          $table->integer('total');          
+          $table->integer('user_id');
+          $table->string('bukti_bayar');
+          $table->integer('approve');
           $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateNotaDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nota_details');
+        Schema::dropIfExists('premiums');
     }
 }

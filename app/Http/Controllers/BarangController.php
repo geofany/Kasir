@@ -92,7 +92,7 @@ class BarangController extends Controller
         $toko = Toko::where('user_id', Auth::user()->id)->firstOrFail();
         $barang = Produk::where('id', $id)->firstOrFail();
         if ($barang->toko_id == $toko->id) {
-            return redirect()->route('editBarang', compact('barang'));
+            return view('editBarang', compact('barang'));
         } else {
           $barang = Produk::where('toko_id', $toko->id)->get();
           return redirect()->route('barang.index', compact('barang'));

@@ -42,13 +42,17 @@ class User extends Authenticatable
         return $this->hasOne('App\Toko');
     }
 
+    public function premiums()
+    {
+        return $this->hasOne('App\Premium');
+    }
+
     public const admin = 0;
     public const basic = 1;
     public const premium = 2;
 
     public function isRole($role)
     {
-      return $this->roles == $role;
+        return $this->roles == $role;
     }
-
 }
