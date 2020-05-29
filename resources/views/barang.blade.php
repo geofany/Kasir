@@ -21,7 +21,8 @@
                         <th>Harga Beli</th>
                         <th>Harga Jual</th>
                         <th>Stock</th>
-                        <th>Opsi</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -35,13 +36,12 @@
                       <td>{{$barangs->harga_beli}}</td>
                       <td>{{$barangs->harga_jual}}</td>
                       <td>{{$barangs->stock}}</td>
-                      <td> <a href="{{route('barang.edit', $barangs->id)}}"><button class="btn btn-warning" type="button" name="button">Edit</button></a> |
-                        <form method="POST" action="{{ route('barang.destroy', $barangs->id) }}">
-                          <input type="hidden" name="_token" value="{{csrf_token()}}"/>
-                          {{ method_field('DELETE') }}
-                          <button class="btn btn-danger" type="submit" name="button">Delete</button>
-                        </form>
-                        </td>
+                      <td> <a href="{{route('barang.edit', $barangs->id)}}"><button class="btn btn-warning" type="button" name="button">Edit</button></a></td>
+                      <td><form method="POST" action="{{ route('barang.destroy', $barangs->id) }}">
+                        <input type="hidden" name="_token" value="{{csrf_token()}}"/>
+                        {{ method_field('DELETE') }}
+                        <button class="btn btn-danger" type="submit" name="button">Delete</button>
+                      </form></td>
                       <?php $i++;  ?>
                     </tr>
 

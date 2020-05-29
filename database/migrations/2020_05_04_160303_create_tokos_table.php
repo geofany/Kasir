@@ -15,10 +15,10 @@ class CreateTokosTable extends Migration
     {
         Schema::create('tokos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('id_user');
+            $table->integer('user_id');
             $table->string('name');
             $table->string('alamat')->nullable();
-            $table->string('logo_toko')->nullable();            
+            $table->string('logo_toko')->nullable();
             $table->timestamps();
         });
     }

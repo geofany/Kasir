@@ -73,7 +73,7 @@ class RegisterController extends Controller
         ]);
 
         Toko::create([
-          'id_user' => $user->id,
+          'user_id' => $user->id,
           'name' => $data['nama_toko'],
         ]);
         return $user;

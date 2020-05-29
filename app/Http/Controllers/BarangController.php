@@ -41,18 +41,34 @@ class BarangController extends Controller
      */
     public function store(Request $request)
     {
-      $toko = Toko::where('user_id', Auth::user()->id)->firstOrFail();
+        $toko = Toko::where('user_id', Auth::user()->id)->firstOrFail();
+        $barange = Produk::where('toko_id', $toko->id)->get();
+        $masuk = true;
+        if (Auth::user()->roles === 1 && count($barange) >= 20) {
+          $message = "Anda Sudah Melampaui Batas Jumlah Barang Untuk User Non Premium";
+        } else {
+          foreach ($barange as $baranges) {
+              if ($baranges->name === $request->name) {
+                  $masuk = false;
+                  break;
+              }
+          }
+          if ($masuk) {
+              $barang = new Produk;
+              $barang->toko_id = $toko->id;
+              $barang->name = $request->name;
+              $barang->harga_beli = $request->harga_beli;
+              $barang->harga_jual = $request->harga_jual;
+              $barang->stock = $request->stock;
 
-      $barang = new Produk;
-      $barang->toko_id = $toko->id;
-      $barang->name = $request->name;
-      $barang->harga_beli = $request->harga_beli;
-      $barang->harga_jual = $request->harga_jual;
-      $barang->stock = $request->stock;
+              $barang->save();
+              $message="Barang Berhasil Ditambahkan";
+          } else {
+              $message="Barang Dengan Nama ".$request->name." Sudah Ada!";
+          }
+        }
 
-      $barang->save();
-      $message="Barang Berhasil Ditambahkan";
-      return view('tambahBarang',compact('message'));
+        return view('tambahBarang', compact('message'));
     }
 
     /**
@@ -63,7 +79,6 @@ class BarangController extends Controller
      */
     public function show($id)
     {
-
     }
 
     /**
@@ -74,8 +89,14 @@ class BarangController extends Controller
      */
     public function edit($id)
     {
-      $barang = Produk::where('id', $id)->firstOrFail();
-      return view('editBarang', compact('barang'));
+        $toko = Toko::where('user_id', Auth::user()->id)->firstOrFail();
+        $barang = Produk::where('id', $id)->firstOrFail();
+        if ($barang->toko_id == $toko->id) {
+            return redirect()->route('editBarang', compact('barang'));
+        } else {
+          $barang = Produk::where('toko_id', $toko->id)->get();
+          return redirect()->route('barang.index', compact('barang'));
+        }
     }
 
     /**
@@ -87,15 +108,15 @@ class BarangController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $barang = Produk::find($id);
+        $barang = Produk::find($id);
 
-      $barang->name = $request->name;
-      $barang->harga_beli = $request->harga_beli;
-      $barang->harga_jual = $request->harga_jual;
-      $barang->stock = $request->stock;
-      $barang->save();
-      $message="Barang Berhasil Diedit";
-      return view('editBarang',compact('message', 'barang'));
+        $barang->name = $request->name;
+        $barang->harga_beli = $request->harga_beli;
+        $barang->harga_jual = $request->harga_jual;
+        $barang->stock = $request->stock;
+        $barang->save();
+        $message="Barang Berhasil Diedit";
+        return view('editBarang', compact('message', 'barang'));
     }
 
     /**
@@ -106,10 +127,16 @@ class BarangController extends Controller
      */
     public function destroy($id)
     {
-        Produk::find($id)->delete();
         $toko = Toko::where('user_id', Auth::user()->id)->firstOrFail();
-        $barang = Produk::where('toko_id', $toko->id)->get();
-        $message="Barang Berhasil Dihapus";
-        return view('barang', compact('message', 'barang'));
+        $barange = Produk::find($id);
+        if ($barange->toko_id === $toko->id) {
+            $barange->delete();
+            $message="Barang Berhasil Dihapus";
+            $barang = Produk::where('toko_id', $toko->id)->get();
+            return view('barang', compact('message', 'barang'));
+        } else {
+          $barang = Produk::where('toko_id', $toko->id)->get();
+            return redirect()->route('barang.index', compact('barang'));
+        }
     }
 }

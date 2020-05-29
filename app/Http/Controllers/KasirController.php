@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
+use App\Toko;
+use App\Produk;
 
 class KasirController extends Controller
 {
@@ -13,7 +16,9 @@ class KasirController extends Controller
      */
     public function index()
     {
-        return view('kasir');
+        $toko = Toko::where('user_id', Auth::user()->id)->firstOrFail();
+        $barang = Produk::where('toko_id', $toko->id)->get();
+        return view('kasir', compact('barang'));
     }
 
     /**

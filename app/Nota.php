@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Nota extends Model
 {
-  protected $fillable = ['kode_penjualan', 'id_toko', 'total_bayar', 'total_keuntungan'];
+  protected $fillable = ['toko_id', 'total_bayar', 'total_kembalian', 'total_keuntungan'];
 
   public function tokos() {
   return $this->belongsTo('App\Toko');
 }
-public function penjualans() {
-return $this->hasMany('App\Penjualan');
+public function nota_details() {
+return $this->hasMany('App\Nota_detail');
 }
 }
