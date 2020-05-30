@@ -23,16 +23,20 @@ Route::group(['middleware' => ['auth', 'checkRole:0,1,2']], function () {
 
 Route::group(['middleware' => ['auth', 'checkRole:0']], function () {
   Route::resource('admin', 'AdminController');
+  Route::get('/approve/{id}', 'AdminController@approve');
 });
 
 Route::group(['middleware' => ['auth', 'checkRole:1,2']], function () {
   Route::get('/editProfile', 'ProfileController@editProfile');
   Route::get('/changePassword', 'ProfileController@changePw');
   Route::post('/storePicture', 'ProfileController@storePicture');
-  Route::post('/changepw', 'ProfileController@changePassword');
-  Route::resource('premium', 'PremiumController');
+  Route::post('/changepw', 'ProfileController@changePassword');  
   Route::resource('barang', 'BarangController');
   Route::resource('profile', 'ProfileController');
   Route::resource('kasir', 'KasirController');
   Route::resource('statistik', 'StatistikController');
+});
+
+Route::group(['middleware' => ['auth', 'checkRole:1']], function () {
+  Route::resource('premium', 'PremiumController');
 });

@@ -4,6 +4,11 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
+          @isset($message)
+          <div class="alert alert-warning">
+            <strong>{{$message}}</strong>
+          </div>
+          @endif
             <div class="card">
                 <div class="card-header">List User</div>
 
@@ -17,13 +22,13 @@
                     </thead>
                     <tbody>
                       <?php $i = 1; ?>
-                      @foreach($user as $users)
+                      @foreach($premiums as $premium)
                       <tr>
                         <td scope="col">{{$i}}</td>
-                        <td>{{$users->name}}</td>
-                        <td>File</td>
+                        <td>{{$premium->users->name}}</td>
+                        <td><a target="_blank" href="{{$premium->bukti_bayar}}">File</a> </td>
                         <td>
-                            <button class="btn btn-warning" type="button" name="button">Premium</button>                        
+                        <a href="{{url('/approve')}}/{{$premium->id}}"><button class="btn btn-warning" type="button" name="button">Premium</button></a>
                         </td>
                       </tr>
                       <?php $i++;  ?>

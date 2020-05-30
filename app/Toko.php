@@ -10,21 +10,21 @@ class Toko extends Model
 
     public function users()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User', 'user_id');
     }
 
     public function produks()
     {
-        return $this->hasMany('App\Produk');
+        return $this->hasMany('App\Produk', 'toko_id');
     }
 
     public function notas()
     {
-        return $this->hasMany('App\Nota');
+        return $this->hasMany('App\Nota', 'toko_id');
     }
 
     public function nota_details()
     {
-        return $this->hasMany('App\Nota_detail');
+        return $this->hasMany('App\Nota_detail', 'toko_id');
     }
 }

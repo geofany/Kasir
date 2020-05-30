@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Premium;
+use App\Toko;
 
 class AdminController extends Controller
 {
@@ -26,10 +27,24 @@ class AdminController extends Controller
      */
     public function create()
     {
-        $user = Premium::where('approve', 0)->get();
-        return view('requestPremium', compact('user'));
+        $premiums = Premium::where('approve', 0)->with('users')->get();
+        return view('requestPremium', compact('premiums'));
     }
 
+    public function approve($id)
+    {
+      $premium = Premium::find($id);
+      $premium->approve = 1;
+      $premium->save();
+
+      $user = User::find($premium->user_id);
+      $user->roles = 2;
+      $user->save();
+
+      $premiums = Premium::where('approve', 0)->with('users')->get();
+      $message="User Berhasil Diupgrade";
+      return view('requestPremium', compact('premiums', 'message'));
+    }
     /**
      * Store a newly created resource in storage.
      *

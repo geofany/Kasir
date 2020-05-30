@@ -10,10 +10,10 @@ class Nota extends Model
 
     public function tokos()
     {
-        return $this->belongsTo('App\Toko');
+        return $this->belongsTo('App\Toko', 'toko_id');
     }
     public function nota_details()
     {
-        return $this->hasMany('App\Nota_detail');
+        return $this->hasMany('App\Nota_detail', 'nota_id');
     }
 }

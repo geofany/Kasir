@@ -39,12 +39,12 @@ class User extends Authenticatable
 
     public function tokos()
     {
-        return $this->hasOne('App\Toko');
+        return $this->hasOne('App\Toko', 'user_id');
     }
 
     public function premiums()
     {
-        return $this->hasOne('App\Premium');
+        return $this->hasOne('App\Premium', 'user_id');
     }
 
     public const admin = 0;
