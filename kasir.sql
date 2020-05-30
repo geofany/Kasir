@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 29 Bulan Mei 2020 pada 16.52
+-- Waktu pembuatan: 30 Bulan Mei 2020 pada 17.51
 -- Versi server: 10.4.8-MariaDB
 -- Versi PHP: 7.1.32
 
@@ -39,13 +39,15 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(45, '2020_05_20_163500_create_penjualans_table', 1),
-(53, '2014_10_12_000000_create_users_table', 2),
-(54, '2014_10_12_100000_create_password_resets_table', 2),
-(55, '2020_05_04_160303_create_tokos_table', 2),
-(56, '2020_05_20_163420_create_produks_table', 2),
-(57, '2020_05_20_163518_create_notas_table', 2),
-(58, '2020_05_29_143532_create_nota_details_table', 2);
+(14, '2020_05_29_173929_create_premiums_table', 1),
+(21, '2020_05_29_181301_create_confirm_premiums_table', 2),
+(22, '2014_10_12_000000_create_users_table', 3),
+(23, '2014_10_12_100000_create_password_resets_table', 3),
+(24, '2020_05_04_160303_create_tokos_table', 3),
+(25, '2020_05_20_163420_create_produks_table', 3),
+(26, '2020_05_20_163518_create_notas_table', 3),
+(27, '2020_05_29_143532_create_nota_details_table', 3),
+(28, '2020_05_29_182400_create_premias_table', 3);
 
 -- --------------------------------------------------------
 
@@ -63,6 +65,14 @@ CREATE TABLE `notas` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data untuk tabel `notas`
+--
+
+INSERT INTO `notas` (`id`, `toko_id`, `total_bayar`, `total_kembalian`, `total_keuntungan`, `created_at`, `updated_at`) VALUES
+(1, 1, 50, 26, 12, '2020-05-30 07:47:05', '2020-05-30 07:47:05'),
+(2, 1, 50, 26, 12, '2020-05-30 07:48:33', '2020-05-30 07:48:33');
+
 -- --------------------------------------------------------
 
 --
@@ -75,10 +85,21 @@ CREATE TABLE `nota_details` (
   `produk_id` int(11) NOT NULL,
   `qty` int(11) NOT NULL,
   `total` int(11) NOT NULL,
-  `keuntungan` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `nota_details`
+--
+
+INSERT INTO `nota_details` (`id`, `nota_id`, `produk_id`, `qty`, `total`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 5, 10, '2020-05-30 07:47:05', '2020-05-30 07:47:05'),
+(2, 1, 2, 2, 4, '2020-05-30 07:47:05', '2020-05-30 07:47:05'),
+(3, 1, 3, 5, 10, '2020-05-30 07:47:05', '2020-05-30 07:47:05'),
+(4, 2, 1, 5, 10, '2020-05-30 07:48:33', '2020-05-30 07:48:33'),
+(5, 2, 2, 2, 4, '2020-05-30 07:48:33', '2020-05-30 07:48:33'),
+(6, 2, 3, 5, 10, '2020-05-30 07:48:33', '2020-05-30 07:48:33');
 
 -- --------------------------------------------------------
 
@@ -91,6 +112,28 @@ CREATE TABLE `password_resets` (
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `premiums`
+--
+
+CREATE TABLE `premiums` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `bukti_bayar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `approve` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `premiums`
+--
+
+INSERT INTO `premiums` (`id`, `user_id`, `bukti_bayar`, `approve`, `created_at`, `updated_at`) VALUES
+(1, 2, 'http://localhost:8000/img/bukti\\download.png', 1, '2020-05-29 13:04:31', '2020-05-29 21:50:49');
 
 -- --------------------------------------------------------
 
@@ -114,10 +157,9 @@ CREATE TABLE `produks` (
 --
 
 INSERT INTO `produks` (`id`, `toko_id`, `name`, `harga_jual`, `harga_beli`, `stock`, `created_at`, `updated_at`) VALUES
-(1, 2, 'Mama Suka', 7000, 5000, 5, '2020-05-29 07:51:02', '2020-05-29 07:51:02'),
-(2, 2, 'Mama Nggak Suka', 3000, 2000, 4, '2020-05-29 07:51:12', '2020-05-29 07:51:12'),
-(3, 1, 'Sprite', 7000, 5000, 2, '2020-05-29 07:51:35', '2020-05-29 07:51:35'),
-(4, 1, 'Finto', 3000, 2000, 5, '2020-05-29 07:51:47', '2020-05-29 07:51:47');
+(1, 1, 'demo', 2, 1, 3, '2020-05-30 07:39:26', '2020-05-30 07:39:26'),
+(2, 1, 'demo2', 2, 1, 3, '2020-05-30 07:39:33', '2020-05-30 07:39:33'),
+(3, 1, 'demo3', 2, 1, 3, '2020-05-30 07:39:38', '2020-05-30 07:39:38');
 
 -- --------------------------------------------------------
 
@@ -140,8 +182,8 @@ CREATE TABLE `tokos` (
 --
 
 INSERT INTO `tokos` (`id`, `user_id`, `name`, `alamat`, `logo_toko`, `created_at`, `updated_at`) VALUES
-(1, 2, 'Idamart', NULL, NULL, '2020-05-29 07:50:23', '2020-05-29 07:50:23'),
-(2, 3, 'Toko Apa Aja', NULL, NULL, '2020-05-29 07:50:45', '2020-05-29 07:50:45');
+(1, 2, 'Idamart', NULL, 'http://localhost:8000/img\\download.png', '2020-05-29 11:57:47', '2020-05-29 12:16:49'),
+(2, 3, 'Toko Apa Aja', NULL, 'http://localhost:8000/img/logo.png', '2020-05-30 08:11:49', '2020-05-30 08:11:49');
 
 -- --------------------------------------------------------
 
@@ -167,9 +209,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `roles`, `name`, `hp`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 0, 'admin', '1234567890', 'admin@mail.com', NULL, '$2y$10$UKFbQAVJsdJHl/lTV3dhJO8cmxbGhl0JEpIddY09KWv1Hd1c4Uy8u', NULL, '2020-05-29 07:50:08', '2020-05-29 07:50:08'),
-(2, 1, 'Geofany Galindra', '1234567890', 'geofanygalindra@gmail.com', NULL, '$2y$10$vjNIF9axoX4OFu7tBMdU6uIe/1ZkIH6bZ4UNV47U2/g0SE12tLY.e', NULL, '2020-05-29 07:50:23', '2020-05-29 07:50:23'),
-(3, 1, 'Nur Firdausa', '1234567890', 'firdausa@gmail.com', NULL, '$2y$10$WnpW8b.JuRPOINSRthtpsOHL7QdJMQ1Vwd8hwOxAbFH3BHUyGlnLO', NULL, '2020-05-29 07:50:45', '2020-05-29 07:50:45');
+(1, 0, 'admin', '1234567890', 'admin@mail.com', NULL, '$2y$10$YNL1RJOWdlCNqfmLApj0xOMjz2n1DnD4gPMxBYiixr/uN.w6g1V5.', NULL, '2020-05-29 11:46:30', '2020-05-29 11:46:30'),
+(2, 2, 'Geofany Galindra', '1234567890', 'geofanygalindra@gmail.com', NULL, '$2y$10$jxV0igch79HIQIhliPQlkuKvHdVhtLobtnYiFRgNEhEsUouQpwcQS', NULL, '2020-05-29 11:57:47', '2020-05-29 21:54:35'),
+(3, 1, 'Nur Firdausa', '1234567890', 'firdausa@gmail.com', NULL, '$2y$10$W33drhuw2ZDUwx8cKn8VrekT3vARqAP.np7V8ITFHXU9AmeWjslrm', NULL, '2020-05-30 08:11:49', '2020-05-30 08:11:49');
 
 --
 -- Indexes for dumped tables
@@ -200,6 +242,12 @@ ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
+-- Indeks untuk tabel `premiums`
+--
+ALTER TABLE `premiums`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `produks`
 --
 ALTER TABLE `produks`
@@ -226,25 +274,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT untuk tabel `notas`
 --
 ALTER TABLE `notas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `nota_details`
 --
 ALTER TABLE `nota_details`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT untuk tabel `premiums`
+--
+ALTER TABLE `premiums`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `produks`
 --
 ALTER TABLE `produks`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `tokos`
