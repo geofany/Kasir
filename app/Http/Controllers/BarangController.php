@@ -19,7 +19,7 @@ class BarangController extends Controller
     public function index()
     {
         $toko = Toko::where('user_id', Auth::user()->id)->firstOrFail();
-        $barang = Produk::where('toko_id', $toko->id)->get();
+        $barang = Produk::where('toko_id', $toko->id)->orderBy('created_at', 'DESC')->get();
         return view('barang', compact('barang'));
     }
 

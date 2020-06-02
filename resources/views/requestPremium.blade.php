@@ -3,7 +3,10 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-12">
+      <div class="col-md-1">
+
+      </div>
+        <div class="col-md-11">
           @isset($message)
           <div class="alert alert-warning">
             <strong>{{$message}}</strong>

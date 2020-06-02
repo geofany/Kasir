@@ -3,15 +3,17 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
+      <div class="col-md-2">
+
+      </div>
         <div class="col-md-8">
           @isset($message)
           <div class="alert alert-warning">
             <strong>{{$message}}</strong>
           </div>
           @endif
+          <h4 class="page-title">Edit Data Barang</h4>
             <div class="card">
-
-                <div class="card-header">Edit Barang {{$barang->name}}</div>
 
                 <div class="card-body">
                   <form action="{{route('barang.update', $barang->id)}}" name="edit" onsubmit="return validateForm()" method="post">
@@ -34,11 +36,12 @@
                       <input class="form-control" type="number" name="stock" value="{{$barang->stock}}" required>
                     </div>
                     <div class="form-group">
-                      <button class="btn btn-warning form-control" type="submit" name="button">Edit Barang</button>
+                      <button class="btn btn-warning" type="submit" name="button">Edit Barang</button>
+                      <a href="{{route('barang.index')}}"> <button class="btn btn-danger" type="button" name="button">Kembali</button> </a>
 
                     </div>
                   </form>
-                  <a href="{{route('barang.index')}}"> <button class="btn btn-danger form-control" type="button" name="button">Kembali</button> </a>
+
                 </div>
             </div>
         </div>

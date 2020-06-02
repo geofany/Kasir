@@ -5,7 +5,9 @@
 <div class="container">
     <div class="row justify-content-center">
 
+      <div class="col-md-2">
 
+      </div>
                   <div class="col-md-4">
                     <div class="card">
                       <div class="card-header">
@@ -43,7 +45,7 @@
                           <i class="fas fa-check"></i> <label for="">Advanced Statistic</label>
                         </div>
                         <div class="form-group">
-                          <a href="{{route('premium.create')}}"><button type="button" class="btn btn-warning form-control" name="button">Upgrade Premium</button></a>  
+                          <a href="{{route('premium.create')}}"><button type="button" class="btn btn-warning form-control" name="button">Upgrade Premium</button></a>
                         </div>
                       </div>
                     </div>

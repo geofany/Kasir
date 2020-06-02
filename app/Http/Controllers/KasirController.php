@@ -47,6 +47,7 @@ class KasirController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->total_bayar);
         $nota = new Nota;
         $toko = Toko::where('user_id', Auth::user()->id)->first();
         $total = $request->total_bayar - $request->total_kembalian;
@@ -73,7 +74,7 @@ class KasirController extends Controller
             ]);
         }
 
-        $barang = Produk::all();
+        $barang = Produk::where('toko_id', Auth::user()->tokos->id)->get();
         $nota_details = Nota_detail::where('nota_id', $nota->id)->get();
         $toko = Toko::where('user_id', Auth::user()->id)->firstOrFail();
         return view('kasir', compact('barang','nota_details','toko','nota'));

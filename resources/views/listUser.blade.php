@@ -3,7 +3,10 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-12">
+      <div class="col-md-1">
+
+      </div>
+        <div class="col-md-11">
             <div class="card">
                 <div class="card-header">List User</div>
 
@@ -34,7 +37,7 @@
                         <td>{{$users->hp}}</td>
                         <td>{{$users->email}}</td>
                         <td>{{$users->tokos->name}}</td>
-                        <td>{{$users->tokos->alamat}}</td>                      
+                        <td>{{$users->tokos->alamat}}</td>
                       </tr>
                       <?php $i++;  ?>
                       @endforeach

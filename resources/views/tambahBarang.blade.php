@@ -3,6 +3,9 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
+      <div class="col-md-2">
+
+      </div>
         <div class="col-md-8">
           @isset($message)
           @if($message == "Barang Berhasil Ditambahkan")
@@ -13,36 +16,42 @@
             <strong>{{$message}}</strong>
           </div>
           @endif
+            <h4 class="page-title">Tambah Data Barang</h4>
+
             <div class="card">
 
-                <div class="card-header">Tambah Barang</div>
+                    <div class="card-body">
 
-                <div class="card-body">
-                  <form action="{{route('barang.store')}}" name="tambah" onsubmit="return validateForm()" method="post">
-                    <input type="hidden" name="_token" value="{{csrf_token()}}"/>
-                    <div class="form-group">
-                      <label for="name">Nama Barang </label>
-                      <input class="form-control" type="text" name="name" value="" required>
-                    </div>
-                    <div class="form-group">
-                      <label for="harga_beli">Harga Beli</label>
-                      <input class="form-control" type="number" name="harga_beli" value="" required>
-                    </div>
-                    <div class="form-group">
-                      <label for="harga_jual">Harga Jual</label>
-                      <input class="form-control" type="number" name="harga_jual" value="" required>
-                    </div>
-                    <div class="form-group">
-                      <label for="stock">Stock</label>
-                      <input class="form-control" type="number" name="stock" value="" required>
-                    </div>
-                    <div class="form-group">
-                      <button class="btn btn-info form-control" type="submit" name="button">Tambahkan Barang</button>
+                        <form class="needs-validation" action="{{route('barang.store')}}" name="tambah" onsubmit="return validateForm()" method="post">
+                            @csrf
+
+                            <div class="form-group position-relative mb-3">
+                                <label for="name">Nama Produk</label>
+                                <input name="name" type="text" class="form-control" placeholder="Nama Produk" value="" required>
+
+                            </div>
+                            <div class="form-group position-relative mb-3">
+                                <label for="harga_beli">Harga Beli</label>
+                                <input name="harga_beli" type="number" class="form-control" placeholder="Harga Beli" value="" required>
+
+                            </div>
+                            <div class="form-group position-relative mb-3">
+                                <label for="harga_jual">Harga Jual</label>
+                                <input name="harga_jual" type="number" class="form-control" placeholder="Harga Jual" value="" required>
+                            </div>
+
+                            <div class="form-group position-relative mb-3">
+                                <label for="stock">Jumlah Stock</label>
+                                <input name="stock" type="number" class="form-control"  placeholder="Jumlah Stok Produk" value="" required>
+                            </div>
+
+
+                            <button class="btn btn-primary" type="submit">Tambahkan Barang</button>
+                            <a href="{{route('barang.index')}}"> <button class="btn btn-danger" type="button" name="button">Kembali</button> </a>
+                            </form>
+
 
                     </div>
-                  </form>
-                  <a href="{{route('barang.index')}}"> <button class="btn btn-danger form-control" type="button" name="button">Kembali</button> </a>
-                </div>
             </div>
         </div>
     </div>

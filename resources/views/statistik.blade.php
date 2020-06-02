@@ -58,6 +58,9 @@
     $labelmostmonth = '["' . implode('", "',$label5) . '"]';
     @endphp
     <div class="row justify-content-center">
+      <div class="col-md-2">
+
+      </div>
         <div class="col-md-10">
             <div class="card">
                 <div class="card-header">Statistik</div>
@@ -87,7 +90,7 @@
                         text-align: center;
                         font-size: 18px;">
                         <button class="btn btn-warning" type="button" name="button">UPGRADE PREMIUM</button></a>
-                        <img style="width:100%" src="https://lh3.googleusercontent.com/tO8Yx1ViocavESfOV-jVAmetL8VkfIiu_Z3rM0UODdK27InSlgHaOwsOnJItESH6T2k1OjV9LEU0sfkGRDMiD28KBNFCFf9-c2-rQqI5oNR3UKNYUJ2vvZ52X4Gp4Dkdf0pYAmFgoq8v3wJxsuV5XYEDFySM8OVtrHmlgA6aaqtWZ-lakTpevOuwguBdv2mgTln9lPUgHOCQJZMsjebW8h_nrCGbRt_KAdjZyBFfFhXIVESQdmZu2b0GxqgM20M-udEuk7qISGzy_O6iJISm7c-3OCR3K6SagYqDLfK9Q9t8lmmG1MA17TbtbLpyIVyHofoMD0nsDitLfr5qGxGwVLiMKRRnmMWp_dZV4loiCetgI1EN7Lh31HIFjLfxeRV2vx-vApIJmoFLQHG2GIqpP3FhGuQWjdyEpEI3Ng-bk1fGJZlCZgo9Y6rmTPuKRJXbmxasBLnMIcBCkR9sZhB0hmYLkgL6TIO1ksyOPmUD3BMRaThmwthfvaNZmfqEd4uLkP4cOosPUHKz007LPZLaWOp6UPrV3lnwtA2pAiHCaVVxmPuFZtM6OmsHgXgzzUJtJ8dA_ALDpNJs7jYKdFAoYOc-u7EtZc_UPFbyP4P_u7Ur-IVnmNkv1nBYHauaHvx6zfd4LTdSw6jA82fgS4qW17ehf_LQzNvoMmgiOkCT2xd9t6in_jmGtde-MfPl=w663-h657-no?authuser=0" alt="">
+                        <img style="width:100%" src="{{url('/img/stat.png')}}" alt="">
                       </div>
                     </div>
                     @else

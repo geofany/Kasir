@@ -79,6 +79,9 @@
 <div class="container">
 
   <div class="row">
+    <div class="col-md-1">
+
+    </div>
     <div class="col-md-8">
       <div class="panel panel-default">
         <div class="panel-heading">New Order</div>
@@ -103,8 +106,8 @@
                 <tr>
                   <td class="no">1</td>
                   <td>
-                    <select class="form-control product_id" name="product_id[]">
-                      <option value="" disabled selected>---Pilih---</option>
+                    <select class="form-control product_id" name="product_id[]" required>
+                      <option value="" disabled selected>--Pilih--</option>
                       @foreach($barang as $product)
                       <option data-price="{!! $product->harga_jual !!}" value="{!! $product->id !!}">
                         {!! $product->name!!}</option>
@@ -112,13 +115,13 @@
                     </select>
                   </td>
                   <td>
-                    <input type="text" class="qty form-control" name="qty[]" value="{{ old('email') }}">
+                    <input type="text" class="qty form-control" name="qty[]" value="{{ old('email') }}" required>
                   </td>
                   <td>
-                    <input type="text" class="price form-control" name="price[]" value="{{ old('email') }}">
+                    <input type="text" class="price form-control" name="price[]" value="{{ old('email') }}" required readonly>
                   </td>
                   <td>
-                    <input type="text" class="amount form-control" name="amount[]">
+                    <input type="text" class="amount form-control" name="amount[]" required readonly>
                   </td>
                   <td>
                   </td>
@@ -137,11 +140,11 @@
 
             <td>
               Get Money:
-              <input type="text" name="total_bayar" class="getmoney form-control">
+              <input type="text" name="total_bayar" class="getmoney form-control" required>
             </td>
             <td>
               Back Money:
-              <input type="text" name="total_kembalian" class="backmoney form-control">
+              <input type="text" name="total_kembalian" class="backmoney form-control" readonly required>
             </td>
             <hr>
         </div>
@@ -150,19 +153,25 @@
     </div>
     <!--  Right -->
 
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="panel panel-default">
         <div class="panel-heading">Actions</div>
 
         <div class="panel-body">
           <center>
-            <button type="submit" form="yoyo" class="btn btn-default btn-lg">
-              Save Order
-            </button>
-            <button type="button" id='hideshow' class="btn btn-primary btn-lg" data-toggle="modal"
-              data-target="#myModal">
-              Generate Reciept
-            </button>
+            <div class="form-group">
+              <button type="submit" form="yoyo" class="btn btn-default btn-lg form-control">
+                Save Order
+              </button>
+            </div>
+            <div class="form-group">
+              <button type="button" id='hideshow' class="btn btn-primary btn-lg form-control" data-toggle="modal"
+                data-target="#myModal">
+                Generate Reciept
+              </button>
+            </div>
+
+
           </center>
         </div>
       </div>
@@ -195,7 +204,7 @@
 
                 <img src="{{$toko->logo_toko}}" alt=""
                   style="height: 75px; width: 20%;display: inline-block;" srcset=""></td>
-            
+
 
                 <table class="" style="width: 75%;display: inline-block;margin: auto;">
 
