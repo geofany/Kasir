@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 30 Bulan Mei 2020 pada 17.51
+-- Waktu pembuatan: 03 Jun 2020 pada 14.29
 -- Versi server: 10.4.8-MariaDB
 -- Versi PHP: 7.1.32
 
@@ -71,7 +71,22 @@ CREATE TABLE `notas` (
 
 INSERT INTO `notas` (`id`, `toko_id`, `total_bayar`, `total_kembalian`, `total_keuntungan`, `created_at`, `updated_at`) VALUES
 (1, 1, 50, 26, 12, '2020-05-30 07:47:05', '2020-05-30 07:47:05'),
-(2, 1, 50, 26, 12, '2020-05-30 07:48:33', '2020-05-30 07:48:33');
+(2, 1, 50, 26, 12, '2020-05-30 07:48:33', '2020-05-30 07:48:33'),
+(3, 2, 5000, -75000, 40000, '2020-06-02 08:57:38', '2020-06-02 08:57:38'),
+(4, 2, 30000, 10000, 10000, '2020-06-02 09:24:00', '2020-06-02 09:24:00'),
+(5, 2, 30000, 10000, 10000, '2020-06-02 09:24:28', '2020-06-02 09:24:28'),
+(6, 2, 30000, 10000, 10000, '2020-06-02 09:24:34', '2020-06-02 09:24:34'),
+(7, 2, 400000, 80000, 160000, '2020-06-02 09:27:06', '2020-06-02 09:27:06'),
+(8, 2, 400000, 80000, 160000, '2020-06-02 09:27:41', '2020-06-02 09:27:41'),
+(9, 2, 400000, 80000, 160000, '2020-06-02 09:27:55', '2020-06-02 09:27:55'),
+(10, 2, 400000, 80000, 160000, '2020-06-02 09:28:36', '2020-06-02 09:28:36'),
+(11, 2, 5000, 4990, 5, '2020-06-02 09:30:23', '2020-06-02 09:30:23'),
+(12, 2, 5000, 4990, 5, '2020-06-02 09:31:49', '2020-06-02 09:31:49'),
+(13, 2, 30000, 10000, 10000, '2020-06-02 10:25:15', '2020-06-02 10:25:15'),
+(14, 4, 15, 2, 5, '2020-06-02 11:27:58', '2020-06-02 11:27:58'),
+(15, 2, 100000, 50000, 25000, '2020-06-03 01:05:03', '2020-06-03 01:05:03'),
+(16, 5, 50000, 2000, 18000, '2020-06-03 02:34:57', '2020-06-03 02:34:57'),
+(17, 5, 50000, 2000, 18000, '2020-06-03 02:36:22', '2020-06-03 02:36:22');
 
 -- --------------------------------------------------------
 
@@ -99,7 +114,25 @@ INSERT INTO `nota_details` (`id`, `nota_id`, `produk_id`, `qty`, `total`, `creat
 (3, 1, 3, 5, 10, '2020-05-30 07:47:05', '2020-05-30 07:47:05'),
 (4, 2, 1, 5, 10, '2020-05-30 07:48:33', '2020-05-30 07:48:33'),
 (5, 2, 2, 2, 4, '2020-05-30 07:48:33', '2020-05-30 07:48:33'),
-(6, 2, 3, 5, 10, '2020-05-30 07:48:33', '2020-05-30 07:48:33');
+(6, 2, 3, 5, 10, '2020-05-30 07:48:33', '2020-05-30 07:48:33'),
+(7, 3, 5, 5, 30000, '2020-06-02 08:57:39', '2020-06-02 08:57:39'),
+(8, 4, 5, 2, 20000, '2020-06-02 09:24:00', '2020-06-02 09:24:00'),
+(9, 5, 5, 2, 20000, '2020-06-02 09:24:28', '2020-06-02 09:24:28'),
+(10, 6, 5, 2, 20000, '2020-06-02 09:24:34', '2020-06-02 09:24:34'),
+(11, 7, 5, 32, 320000, '2020-06-02 09:27:06', '2020-06-02 09:27:06'),
+(12, 8, 5, 32, 320000, '2020-06-02 09:27:41', '2020-06-02 09:27:41'),
+(13, 9, 5, 32, 320000, '2020-06-02 09:27:55', '2020-06-02 09:27:55'),
+(14, 10, 5, 32, 320000, '2020-06-02 09:28:36', '2020-06-02 09:28:36'),
+(15, 11, 1, 5, 10, '2020-06-02 09:30:23', '2020-06-02 09:30:23'),
+(16, 12, 1, 5, 10, '2020-06-02 09:31:49', '2020-06-02 09:31:49'),
+(17, 13, 5, 2, 20000, '2020-06-02 10:25:15', '2020-06-02 10:25:15'),
+(18, 14, 7, 2, 4, '2020-06-02 11:27:58', '2020-06-02 11:27:58'),
+(19, 14, 9, 3, 9, '2020-06-02 11:27:58', '2020-06-02 11:27:58'),
+(20, 15, 5, 5, 50000, '2020-06-03 01:05:03', '2020-06-03 01:05:03'),
+(21, 16, 11, 2, 16000, '2020-06-03 02:34:57', '2020-06-03 02:34:57'),
+(22, 16, 13, 4, 32000, '2020-06-03 02:34:57', '2020-06-03 02:34:57'),
+(23, 17, 11, 2, 16000, '2020-06-03 02:36:22', '2020-06-03 02:36:22'),
+(24, 17, 13, 4, 32000, '2020-06-03 02:36:22', '2020-06-03 02:36:22');
 
 -- --------------------------------------------------------
 
@@ -133,7 +166,9 @@ CREATE TABLE `premiums` (
 --
 
 INSERT INTO `premiums` (`id`, `user_id`, `bukti_bayar`, `approve`, `created_at`, `updated_at`) VALUES
-(1, 2, 'http://localhost:8000/img/bukti\\download.png', 1, '2020-05-29 13:04:31', '2020-05-29 21:50:49');
+(1, 2, 'http://localhost:8000/img/bukti\\download.png', 1, '2020-05-29 13:04:31', '2020-05-29 21:50:49'),
+(2, 5, 'http://localhost:8000/img/bukti\\logo.jpg', 1, '2020-06-02 10:58:03', '2020-06-02 11:29:04'),
+(3, 6, 'http://localhost:8000/img/bukti\\buttonbg.png', 1, '2020-06-03 02:23:00', '2020-06-03 02:40:54');
 
 -- --------------------------------------------------------
 
@@ -159,7 +194,13 @@ CREATE TABLE `produks` (
 INSERT INTO `produks` (`id`, `toko_id`, `name`, `harga_jual`, `harga_beli`, `stock`, `created_at`, `updated_at`) VALUES
 (1, 1, 'demo', 2, 1, 3, '2020-05-30 07:39:26', '2020-05-30 07:39:26'),
 (2, 1, 'demo2', 2, 1, 3, '2020-05-30 07:39:33', '2020-05-30 07:39:33'),
-(3, 1, 'demo3', 2, 1, 3, '2020-05-30 07:39:38', '2020-05-30 07:39:38');
+(3, 1, 'demo3', 2, 1, 3, '2020-05-30 07:39:38', '2020-05-30 07:39:38'),
+(5, 2, 'Sprite Tea With Socking SODAAA', 10000, 5000, 100, '2020-06-02 08:53:15', '2020-06-02 08:53:15'),
+(7, 4, 'Sprite', 2, 1, 3, '2020-06-02 10:58:24', '2020-06-02 10:58:24'),
+(9, 4, 'demo', 3, 2, 4, '2020-06-02 10:59:33', '2020-06-02 10:59:33'),
+(10, 4, 'anyar', 35, 5, 46, '2020-06-02 11:01:58', '2020-06-02 11:27:30'),
+(11, 5, 'Sprite', 8000, 5000, 10, '2020-06-03 02:31:39', '2020-06-03 02:31:39'),
+(13, 5, 'Fanta', 8000, 5000, 5, '2020-06-03 02:32:26', '2020-06-03 02:32:26');
 
 -- --------------------------------------------------------
 
@@ -183,7 +224,10 @@ CREATE TABLE `tokos` (
 
 INSERT INTO `tokos` (`id`, `user_id`, `name`, `alamat`, `logo_toko`, `created_at`, `updated_at`) VALUES
 (1, 2, 'Idamart', NULL, 'http://localhost:8000/img\\download.png', '2020-05-29 11:57:47', '2020-05-29 12:16:49'),
-(2, 3, 'Toko Apa Aja', NULL, 'http://localhost:8000/img/logo.png', '2020-05-30 08:11:49', '2020-05-30 08:11:49');
+(2, 3, 'Toko Apa Aja', NULL, 'http://localhost:8000/img/logo.png', '2020-05-30 08:11:49', '2020-05-30 08:11:49'),
+(3, 4, 'Demo Store', NULL, 'http://localhost:8000/img/logo.png', '2020-06-02 10:42:20', '2020-06-02 10:42:20'),
+(4, 5, 'Ipel Store', NULL, 'http://localhost:8000/img\\logo.png', '2020-06-02 10:57:05', '2020-06-02 10:57:25'),
+(5, 6, 'Ilham Store', 'Jember Kidul', 'http://localhost:8000/img\\buttonbg.png', '2020-06-03 02:10:33', '2020-06-03 02:27:56');
 
 -- --------------------------------------------------------
 
@@ -210,8 +254,11 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `roles`, `name`, `hp`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 0, 'admin', '1234567890', 'admin@mail.com', NULL, '$2y$10$YNL1RJOWdlCNqfmLApj0xOMjz2n1DnD4gPMxBYiixr/uN.w6g1V5.', NULL, '2020-05-29 11:46:30', '2020-05-29 11:46:30'),
-(2, 2, 'Geofany Galindra', '1234567890', 'geofanygalindra@gmail.com', NULL, '$2y$10$jxV0igch79HIQIhliPQlkuKvHdVhtLobtnYiFRgNEhEsUouQpwcQS', NULL, '2020-05-29 11:57:47', '2020-05-29 21:54:35'),
-(3, 1, 'Nur Firdausa', '1234567890', 'firdausa@gmail.com', NULL, '$2y$10$W33drhuw2ZDUwx8cKn8VrekT3vARqAP.np7V8ITFHXU9AmeWjslrm', NULL, '2020-05-30 08:11:49', '2020-05-30 08:11:49');
+(2, 2, 'Geofany Galindra', '1234567890', 'geofanygalindra@gmail.com', NULL, '$2y$10$KBISNSSGu5.3vIgIFgUx7u2ZQ3bu9CvfjtSbYKhkqE22uDad4..vW', NULL, '2020-05-29 11:57:47', '2020-06-03 05:25:21'),
+(3, 1, 'Nur Firdausa', '1234567890', 'firdausa@gmail.com', NULL, '$2y$10$W33drhuw2ZDUwx8cKn8VrekT3vARqAP.np7V8ITFHXU9AmeWjslrm', NULL, '2020-05-30 08:11:49', '2020-05-30 08:11:49'),
+(4, 1, 'Demo', '1234567890', 'demo@mail.com', NULL, '$2y$10$lY1EEwxl5OFJkScVrGPcnO8PiC1VdY7Tz9gXLL6Hke6tG.Id4i2by', NULL, '2020-06-02 10:42:20', '2020-06-02 10:42:20'),
+(5, 2, 'Ipelllll', '1234567890', 'ipel@mail.com', NULL, '$2y$10$uAPqWPu5UEHJXUj2THwbpu2gMuc9ahmjSGxyxuH2VlXoHwgZg1fby', NULL, '2020-06-02 10:57:05', '2020-06-02 11:29:04'),
+(6, 2, 'Ilham', '1234567890', 'ilham@mail.com', NULL, '$2y$10$GfXiq/uPsq6.uganG4DSEup9lZI8YzluSKeZ0HnqB0NGqLwva39dy', NULL, '2020-06-03 02:10:33', '2020-06-03 02:40:54');
 
 --
 -- Indexes for dumped tables
@@ -280,37 +327,37 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT untuk tabel `notas`
 --
 ALTER TABLE `notas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT untuk tabel `nota_details`
 --
 ALTER TABLE `nota_details`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT untuk tabel `premiums`
 --
 ALTER TABLE `premiums`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `produks`
 --
 ALTER TABLE `produks`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT untuk tabel `tokos`
 --
 ALTER TABLE `tokos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
