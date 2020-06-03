@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Toko extends Model
 {
-    protected $fillable = ['user_id', 'name', 'alamat', 'logo_toko'];
+    protected $fillable = ['user_id','email', 'name', 'alamat', 'logo_toko'];
 
     public function users()
     {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\Toko;
 
@@ -62,9 +63,10 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
+
       $user_id = Auth::user()->id;
       User::where('id', $user_id)->update(['name' => $request->name, 'email' => $request->email, 'hp' => $request->hp]);
-      Toko::where('user_id', $user_id)->update(['name' => $request->namaToko, 'alamat' => $request->alamat]);
+      Toko::where('user_id', $user_id)->update(['name' => $request->nameToko, 'alamat' => $request->alamat]);
       return redirect()->route('profile.index');
     }
 
@@ -121,15 +123,13 @@ class ProfileController extends Controller
 
     public function changePassword(Request $request)
     {
-      if (Hash::check($request->old_password) === Auth::user()->password) {
+      if (Hash::check($request->old_password, Auth::user()->password)) {
         $user = Auth::user();
-        $user->password = $request->new_password;
+        $user->password = Hash::make($request->new_password);
         $user->save();
         $message="Password Berhasil Diubah";
         return view('changePassword', compact('message'));
       }
-
-
     }
 
     public function changePw()

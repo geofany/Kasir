@@ -22,10 +22,10 @@
 			var n = ($('.neworderbody tr').length - 0) + 1;
 			var tr = '<tr><td class="no">' + n + '</td>' + '<td><select class="form-control product_id" name="product_id[]">' + product + '</select></td>' +
 				'<td><input type="text" class="qty form-control" name="qty[]" value="{{ old('
-			email ') }}"></td>' +
+			email ') }}" required></td>' +
 				'<td><input type="text" class="price form-control" name="price[]" value="{{ old('
-			email ') }}"></td>' +
-				'<td><input type="text" class="amount form-control" name="amount[]"></td>' +
+			email ') }}" required readonly></td>' +
+				'<td><input type="text" class="amount form-control" name="amount[]" required readonly></td>' +
 				'<td><input type="button" class="btn btn-danger delete" value="x"></td></tr>';
 			$('.neworderbody').append(tr);
 		});
@@ -291,7 +291,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          
         </div>
       </div>
     </div>

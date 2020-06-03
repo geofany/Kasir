@@ -20,19 +20,19 @@
                     </div>
                     <div class="form-group">
                       <label for="email">E-mail :</label>
-                      <input class="form-control" type="email" name="name" value="{{$userData->email}}" required>
+                      <input class="form-control" type="email" name="email" value="{{$userData->email}}" required>
                     </div>
                     <div class="form-group">
                       <label for="hp">No. HP :</label>
-                      <input class="form-control" type="number" name="name" value="{{$userData->hp}}" required>
+                      <input class="form-control" type="number" name="hp" value="{{$userData->hp}}" required>
                     </div>
                     <div class="form-group">
                       <label for="namaToko">Nama Toko :</label>
-                      <input class="form-control" type="text" name="name" value="{{$userData->tokos->name}}" required>
+                      <input class="form-control" type="text" name="nameToko" value="{{$userData->tokos->name}}" required>
                     </div>
                     <div class="form-group">
                       <label for="alamat">Alamat :</label>
-                      <input class="form-control" type="text" name="name" value="{{$userData->tokos->alamat}}" required>
+                      <input class="form-control" type="text" name="alamat" value="{{$userData->tokos->alamat}}" required>
                     </div>
                     <div class="form-group">
                         <button class="btn btn-success form-control" type="submit" name="button">Simpan</button>

@@ -12,7 +12,7 @@
 
                 <div class="card-body">
 
-                  <form class="" name="change" action="index.html" onsubmit="return validateForm()" method="post">
+                  <form class="" name="change" action="{{url('/changepw')}}" onsubmit="return validateForm()" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}"/>
                     <div class="form-group">
                       <label for="old_password">Password Lama :</label>
